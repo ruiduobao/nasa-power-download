@@ -1,15 +1,14 @@
 ---
-name: nasa-power-download
-display_name: NASA POWER 数据下载
-version: 0.1.0
-author: ruiduobao
-license: MIT-0
-description: |
-  Download NASA POWER (Prediction Of Worldwide Energy Resource) data including solar radiation,
+description: 'Download NASA POWER (Prediction Of Worldwide Energy Resource) data including
+  solar radiation,
+
   temperature, precipitation, wind speed, humidity, and 300+ meteorological parameters.
-  Supports daily, monthly, and climatology temporal resolutions for point or regional queries.
-runtime: python>=3.8
-tags: [gis, remote-sensing, meteorology, climate, solar, nasa, power]
+
+  Supports daily, monthly, and climatology temporal resolutions for point or regional
+  queries.
+
+  '
+name: nasa-power-download
 ---
 
 # NASA POWER Data Download
@@ -47,30 +46,30 @@ It covers the period from 1984 to present at 0.5° × 0.5° spatial resolution g
 
 ```bash
 # Download daily solar radiation for a point
-python scripts/nasa_power_download.py download \
+python scripts\nasa_power_download.py download \
   --param ALLSKY_SFC_SW_DWN \
   --lat 39.9042 --lon 116.4074 \
   --start 2023-01-01 --end 2023-12-31 \
   --output beijing_solar.csv
 
 # Download monthly temperature for a region
-python scripts/nasa_power_download.py download \
+python scripts\nasa_power_download.py download \
   --param T2M --resolution monthly \
   --bbox 73 18 135 54 \
   --start 2020-01 --end 2020-12 \
   --output china_temp.csv
 
 # Get climatology (long-term average)
-python scripts/nasa_power_download.py download \
+python scripts\nasa_power_download.py download \
   --param PRECTOTCORR --resolution climatology \
   --lat 31.2304 --lon 121.4737 \
   --output shanghai_rain_climatology.json --format json
 
 # List all available parameters
-python scripts/nasa_power_download.py list-params
+python scripts\nasa_power_download.py list-params
 
 # Show parameter info
-python scripts/nasa_power_download.py info --param ALLSKY_SFC_SW_DWN
+python scripts\nasa_power_download.py info --param ALLSKY_SFC_SW_DWN
 ```
 
 ## Parameters
@@ -139,7 +138,7 @@ pip install -r scripts/requirements.txt
   ```bash
   for lat in 30 35 40; do
     for lon in 110 115 120; do
-      python scripts/nasa_power_download.py download \
+      python scripts\nasa_power_download.py download \
         --param T2M --lat $lat --lon $lon \
         --start 2023-01-01 --end 2023-12-31 \
         --output "temp_${lat}_${lon}.csv"
@@ -182,7 +181,7 @@ pip install -r scripts/requirements.txt
 ```bash
 # Download T2M for 12 months at a single point
 for month in $(seq -w 1 12); do
-  python scripts/nasa_power_download.py download     --lat 39.9042 --lon 116.4074     --start 2023-01-01 --end 2023-12-31     --param T2M --output beijing_t2m_${month}.csv
+  python scripts\nasa_power_download.py download     --lat 39.9042 --lon 116.4074     --start 2023-01-01 --end 2023-12-31     --param T2M --output beijing_t2m_${month}.csv
 done
 ```
 
@@ -203,7 +202,7 @@ jobs:
           python-version: '3.11'
       - run: pip install requests
       - run: |
-          python scripts/nasa_power_download.py download \
+          python scripts\nasa_power_download.py download \
             --lat 39.9042 --lon 116.4074 \
             --start $(date -d '7 days ago' +%Y-%m-%d) \
             --end $(date +%Y-%m-%d) \
@@ -213,7 +212,7 @@ jobs:
 
 ### PostgreSQL/PostGIS Import
 ```bash
-python scripts/nasa_power_download.py download --lat 39.9 --lon 116.4   --start 2023-01-01 --end 2023-12-31 --param T2M --output weather.csv
+python scripts\nasa_power_download.py download --lat 39.9 --lon 116.4   --start 2023-01-01 --end 2023-12-31 --param T2M --output weather.csv
 
 psql -d gis_db -c "\COPY weather(lat, lon, date, t2m) FROM 'weather.csv' CSV HEADER"
 ```
@@ -255,30 +254,30 @@ psql -d gis_db -c "\COPY weather(lat, lon, date, t2m) FROM 'weather.csv' CSV HEA
 
 ```bash
 # 下载北京逐日太阳辐射
-python scripts/nasa_power_download.py download \
+python scripts\nasa_power_download.py download \
   --param ALLSKY_SFC_SW_DWN \
   --lat 39.9042 --lon 116.4074 \
   --start 2023-01-01 --end 2023-12-31 \
   --output beijing_solar.csv
 
 # 下载中国区域月平均气温
-python scripts/nasa_power_download.py download \
+python scripts\nasa_power_download.py download \
   --param T2M --resolution monthly \
   --bbox 73 18 135 54 \
   --start 2020-01 --end 2020-12 \
   --output china_temp.csv
 
 # 获取上海降水气候态（长期平均）
-python scripts/nasa_power_download.py download \
+python scripts\nasa_power_download.py download \
   --param PRECTOTCORR --resolution climatology \
   --lat 31.2304 --lon 121.4737 \
   --output shanghai_rain_climatology.json --format json
 
 # 列出所有可用参数
-python scripts/nasa_power_download.py list-params
+python scripts\nasa_power_download.py list-params
 
 # 查看参数详情
-python scripts/nasa_power_download.py info --param ALLSKY_SFC_SW_DWN
+python scripts\nasa_power_download.py info --param ALLSKY_SFC_SW_DWN
 ```
 
 ### 数据来源
