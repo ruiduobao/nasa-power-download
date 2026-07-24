@@ -1,0 +1,9 @@
+{
+  "name": "nasa-power-download",
+  "description": "GIS skill for nasa-power-download",
+  "version": "0.1.0",
+  "author": "ruiduobao",
+  "skills": [
+    "nasa-power-download"
+  ]
+}
