@@ -1,14 +1,6 @@
 ---
-description: 'Download NASA POWER (Prediction Of Worldwide Energy Resource) data including
-  solar radiation,
-
-  temperature, precipitation, wind speed, humidity, and 300+ meteorological parameters.
-
-  Supports daily, monthly, and climatology temporal resolutions for point or regional
-  queries.
-
-  '
 name: nasa-power-download
+description: 'Download NASA POWER (Prediction Of Worldwide Energy Resource) data including description: 'Download NASA POWER (Prediction Of Worldwide Energy Resource) data including solar radiation,  temperature, precipitation, wind speed, humidity, and 300+ meteorological parameters.  Supports daily, monthly, and climatology temporal resolutions for point or regional queries.  '
 ---
 
 # NASA POWER Data Download
